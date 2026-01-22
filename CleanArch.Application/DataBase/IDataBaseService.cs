@@ -1,15 +1,13 @@
-﻿using CleanArch.Domain.Entities.Booking;
-using CleanArch.Domain.Entities.Customer;
-using CleanArch.Domain.Entities.User;
+﻿using CleanArch.Domain.Entities.Category;
+using CleanArch.Domain.Entities.WorkTask;
 using Microsoft.EntityFrameworkCore;
 
 namespace CleanArch.Application.DataBase
 {
     public interface IDataBaseService
     {
-        DbSet<UserEntity> User { get; set; }
-        DbSet<CustomerEntity> Customer { get; set; }
-        DbSet<BookingEntity> Booking {  get; set; }
+        DbSet<CategoryEntity> Categories { get; set; }
+        DbSet<WorkTaskEntity> WorkTasks { get; set; }
 
         Task<bool> SaveAsync();
     }

@@ -6,7 +6,6 @@
     <ImplicitUsings>enable</ImplicitUsings>
 	  <InvariantGlobalization>false</InvariantGlobalization>
 	  <GenerateDocumentationFile>True</GenerateDocumentationFile>
-	  <DocumentationFile>C:\Users\tobon\Dev\Clean-Architecture\CleanArch.API.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

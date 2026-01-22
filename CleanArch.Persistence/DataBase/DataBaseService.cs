@@ -1,7 +1,6 @@
 ﻿using CleanArch.Application.DataBase;
-using CleanArch.Domain.Entities.Booking;
-using CleanArch.Domain.Entities.Customer;
-using CleanArch.Domain.Entities.User;
+using CleanArch.Domain.Entities.Category;
+using CleanArch.Domain.Entities.WorkTask;
 using CleanArch.Persistence.Configuration;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,9 +10,9 @@ namespace CleanArch.Persistence.DataBase
     {
         public DataBaseService(DbContextOptions options) : base(options) { }
 
-        public DbSet<UserEntity> User { get; set; }
-        public DbSet<CustomerEntity> Customer { get; set; }
-        public DbSet<BookingEntity> Booking { get; set; }
+        public DbSet<CategoryEntity> Categories { get; set; }
+        public DbSet<WorkTaskEntity> WorkTasks { get; set; }
+
         public async Task<bool> SaveAsync()
         {
             return await base.SaveChangesAsync() > 0;
@@ -26,9 +25,8 @@ namespace CleanArch.Persistence.DataBase
 
         private void EntityConfiguration(ModelBuilder modelBuilder)
         {
-            new UserConfiguration(modelBuilder.Entity<UserEntity>());
-            new CustomerConfiguration(modelBuilder.Entity<CustomerEntity>());
-            new BookingConfiguration(modelBuilder.Entity<BookingEntity>());
+            new CategoryConfiguration(modelBuilder.Entity<CategoryEntity>());
+            new WorkTaskConfiguration(modelBuilder.Entity<WorkTaskEntity>());
         }
     }
 }

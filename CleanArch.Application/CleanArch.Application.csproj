@@ -18,8 +18,4 @@
     <ProjectReference Include="..\CleanArch.Domain\CleanArch.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="DataBase\User\Queries\" />
-  </ItemGroup>
-
 </Project>
