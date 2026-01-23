@@ -1,8 +1,8 @@
 ﻿using CleanArch.Domain.Dto;
 
-namespace CleanArch.Application.DataBase.WorkTask.Queries.GetAllWorkTasks
+namespace CleanArch.Application.DataBase.WorkTask.Queries.GetWorkTaskById
 {
-    public class GetAllWorkTasksModel
+    public class GetWorkTaskByIdModel
     {
         public Guid Id { get; set; }
         public string Title { get; set; } = string.Empty;

@@ -16,7 +16,7 @@ namespace CleanArch.Persistence.Configuration
             entityBuilder.Property(x => x.RowVersion).IsRowVersion();
 
             entityBuilder.HasOne(x => x.Category)
-                .WithMany(x => x.WorkTasks)
+                .WithMany(c => c.WorkTasks)
                 .HasForeignKey(x => x.CategoryId)
                 .OnDelete(DeleteBehavior.Restrict);
 

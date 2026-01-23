@@ -16,7 +16,7 @@ namespace CleanArch.Application.DataBase.WorkTask.Queries.GetAllWorkTasks
 
         public async Task<List<GetAllWorkTasksModel>> Execute()
         {
-            var listEntity = await _dataBaseService.WorkTasks.ToListAsync();
+            var listEntity = await _dataBaseService.WorkTasks.Include(c => c.Category).ToListAsync();
             return _mapper.Map<List<GetAllWorkTasksModel>>(listEntity);
         }
     }

@@ -9,7 +9,8 @@ namespace CleanArch.Application.Validators.WorkTask
         {
             RuleFor(x => x.Title).NotNull().NotEmpty().MaximumLength(100);
             RuleFor(x => x.Status).NotNull();
-            RuleFor(x => x.DueDate).NotNull().NotEmpty();
+            RuleFor(x => x.DueDate).NotNull().NotEmpty().GreaterThan(DateTime.UtcNow)
+                .WithMessage("La fecha debe ser despues de hoy.");
             RuleFor(x => x.CategoryId).NotNull().NotEmpty();
         }
     }

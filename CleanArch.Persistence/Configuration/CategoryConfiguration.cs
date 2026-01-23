@@ -13,11 +13,6 @@ namespace CleanArch.Persistence.Configuration
 
             entityBuilder.HasIndex(x => x.Name)
                 .IsUnique();
-
-            entityBuilder.HasMany(x => x.WorkTasks)
-                .WithOne(x => x.Category)
-                .HasForeignKey(x => x.CategoryId);
-
         }
     }
 }

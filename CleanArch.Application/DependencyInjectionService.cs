@@ -5,6 +5,7 @@ using CleanArch.Application.DataBase.Category.Queries.GetAllCategories;
 using CleanArch.Application.DataBase.WorkTask.Commands.CreateWorkTask;
 using CleanArch.Application.DataBase.WorkTask.Commands.UpdateWorkTask;
 using CleanArch.Application.DataBase.WorkTask.Queries.GetAllWorkTasks;
+using CleanArch.Application.DataBase.WorkTask.Queries.GetWorkTaskById;
 using CleanArch.Application.Validators.Category;
 using CleanArch.Application.Validators.WorkTask;
 using FluentValidation;
@@ -32,6 +33,7 @@ namespace CleanArch.Application
             services.AddTransient<ICreateWorkTaskCommand, CreateWorkTaskCommand>();
             services.AddTransient<IUpdateWorkTaskCommand, UpdateWorkTaskCommand>();
             services.AddTransient<IGetAllWorkTasksQuery, GetAllWorkTasksQuery>();
+            services.AddTransient<IGetWorkTaskByIdQuery, GetWorkTaskByIdQuery>();
             #endregion
 
             #region Validatorsd

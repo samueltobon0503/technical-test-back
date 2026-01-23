@@ -1,6 +1,7 @@
 ﻿using CleanArch.Application.DataBase.WorkTask.Commands.CreateWorkTask;
 using CleanArch.Application.DataBase.WorkTask.Commands.UpdateWorkTask;
 using CleanArch.Application.DataBase.WorkTask.Queries.GetAllWorkTasks;
+using CleanArch.Application.DataBase.WorkTask.Queries.GetWorkTaskById;
 using CleanArch.Application.Exceptions;
 using CleanArch.Application.Features;
 using FluentValidation;
@@ -48,6 +49,19 @@ namespace CleanArch.API.Controllers
             var data = await getAllWorkTasksQuery.Execute();
 
             if (data.Count == 0)
+                return StatusCode(StatusCodes.Status204NoContent, ResponseApiService.Response(StatusCodes.Status204NoContent));
+
+            return StatusCode(StatusCodes.Status200OK, ResponseApiService.Response(StatusCodes.Status200OK, data));
+        }
+
+        [HttpGet("get-by-id/{workTaskId}")]
+        public async Task<IActionResult> GetById(
+            string workTaskId,
+            [FromServices] IGetWorkTaskByIdQuery getWorkTaskByIdQuery)
+        {
+            var data = await getWorkTaskByIdQuery.Execute(Guid.Parse(workTaskId));
+
+            if (data == null)
                 return StatusCode(StatusCodes.Status204NoContent, ResponseApiService.Response(StatusCodes.Status204NoContent));
 
             return StatusCode(StatusCodes.Status200OK, ResponseApiService.Response(StatusCodes.Status200OK, data));
