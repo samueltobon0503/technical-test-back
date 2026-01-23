@@ -4,7 +4,7 @@ using Microsoft.Extensions.Caching.Memory;
 
 namespace CleanArch.Application.DataBase.Category.Queries.GetAllCategories
 {
-    internal class GetAllCategoriesQuery : IGetAllCategoriesQuery
+    public class GetAllCategoriesQuery : IGetAllCategoriesQuery
     {
         private readonly IDataBaseService _dataBaseService;
         private readonly IMapper _mapper;

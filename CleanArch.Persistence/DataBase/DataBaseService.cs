@@ -3,6 +3,7 @@ using CleanArch.Domain.Entities.Category;
 using CleanArch.Domain.Entities.WorkTask;
 using CleanArch.Persistence.Configuration;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace CleanArch.Persistence.DataBase
 {
@@ -17,6 +18,11 @@ namespace CleanArch.Persistence.DataBase
         {
             return await base.SaveChangesAsync() > 0;
         }
+        public new EntityEntry Entry(object entity)
+        {
+            return base.Entry(entity);
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

@@ -24,16 +24,5 @@ namespace CleanArch.API.Controllers
             var data = await createCategoryCommand.Execute(model);
             return StatusCode(StatusCodes.Status201Created, ResponseApiService.Response(StatusCodes.Status201Created, data));
         }
-
-        //[HttpGet("get-all")]
-        //public async Task<IActionResult> GetAll(
-        //    [FromServices] IGetAllUserQuery getAlluserQuery)
-        //{
-        //    var data = await getAlluserQuery.Execute();
-        //    if (data == null || data.Count == 0)
-        //        return StatusCode(StatusCodes.Status404NotFound, ResponseApiService.Response(StatusCodes.Status404NotFound, data));
-
-        //    return StatusCode(StatusCodes.Status200OK, ResponseApiService.Response(StatusCodes.Status200OK, data));
-        //}
     }
 }
