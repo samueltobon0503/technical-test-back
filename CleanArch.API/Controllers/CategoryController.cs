@@ -1,4 +1,5 @@
 ﻿using CleanArch.Application.DataBase.Category.Commands.CreateCategory;
+using CleanArch.Application.DataBase.Category.Queries.GetAllCategories;
 using CleanArch.Application.Exceptions;
 using CleanArch.Application.Features;
 using FluentValidation;
@@ -23,6 +24,18 @@ namespace CleanArch.API.Controllers
 
             var data = await createCategoryCommand.Execute(model);
             return StatusCode(StatusCodes.Status201Created, ResponseApiService.Response(StatusCodes.Status201Created, data));
+        }
+
+        [HttpGet("get-all")]
+        public async Task<IActionResult> GetAll(
+            [FromServices] IGetAllCategoriesQuery getAllCategoriesQuery)
+        {
+            var data = await getAllCategoriesQuery.Execute();
+
+            if (data.Count == 0)
+                return StatusCode(StatusCodes.Status204NoContent, ResponseApiService.Response(StatusCodes.Status204NoContent));
+
+            return StatusCode(StatusCodes.Status200OK, ResponseApiService.Response(StatusCodes.Status200OK, data));
         }
     }
 }

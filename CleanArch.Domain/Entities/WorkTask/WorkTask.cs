@@ -4,7 +4,7 @@
     {
         public Guid Id { get; set; }
         public string Title { get; set; } = string.Empty;
-        public TaskStatus Status { get; set; }
+        public Enum.TaskStatus Status { get; set; }
         public DateTime DueDate { get; set; }
         public int CategoryId { get; set; }
         public Category.CategoryEntity Category { get; set; } = null!;

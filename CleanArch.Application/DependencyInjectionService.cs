@@ -23,6 +23,7 @@ namespace CleanArch.Application
             });
 
             services.AddSingleton(mapper.CreateMapper());
+            services.AddMemoryCache();
 
             #region Category
             services.AddTransient<ICreateCategoryCommand, CreateCategoryCommand>();

@@ -13,32 +13,7 @@ namespace CleanArch.API
                 {
                     Version = "v1",
                     Title = "Clean Architecture API",
-                    Description = "API to show a correct way to apply clean architecture"
-                });
-
-                options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-                {
-                    In = ParameterLocation.Header,
-                    Description = "Ingrese un token válido",
-                    Name = "Authorization",
-                    Type = SecuritySchemeType.Http,
-                    BearerFormat = "JWT",
-                    Scheme = "Bearer"
-                });
-
-                options.AddSecurityRequirement(new OpenApiSecurityRequirement
-                {
-                    {
-                        new OpenApiSecurityScheme
-                        {
-                            Reference = new OpenApiReference
-                            {
-                                Type = ReferenceType.SecurityScheme,
-                                Id = "Bearer"
-                            }
-                        },
-                        new string[]{}
-                    }
+                    Description = "API to show a correct way to apply clean architecture in the technical test"
                 });
 
                 var fileName = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";

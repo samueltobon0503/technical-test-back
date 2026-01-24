@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CleanArch.Application.Common.Constants;
 using CleanArch.Domain.Entities.WorkTask;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,7 +21,7 @@ namespace CleanArch.Application.DataBase.WorkTask.Commands.UpdateWorkTask
             var currentEntity = await _dataBaseService.WorkTasks
                 .AsNoTracking().FirstOrDefaultAsync(x => x.Id == model.Id);
 
-            if (currentEntity == null) throw new KeyNotFoundException("La tarea no existe");
+            if (currentEntity == null) throw new KeyNotFoundException(Constants.TASK_NOT_FOUND_ERROR);
 
             var entityToUpdate = _mapper.Map<WorkTaskEntity>(model);
 
@@ -35,8 +36,8 @@ namespace CleanArch.Application.DataBase.WorkTask.Commands.UpdateWorkTask
             }
             catch (DbUpdateConcurrencyException)
             {
-               
-                throw new Exception("El registro ha sido modificado por otro usuario. Por favor recargue para ver los cambios recientes.");
+
+                throw new DbUpdateConcurrencyException(Constants.TASK_ALREADY_MODIFIED_ERROR);
             }
         }
     }

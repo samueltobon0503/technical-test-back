@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CleanArch.Application.Common.Constants;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 
@@ -10,7 +11,7 @@ namespace CleanArch.Application.DataBase.Category.Queries.GetAllCategories
         private readonly IMapper _mapper;
         private readonly IMemoryCache _cache;
 
-        private const string CategoryCacheKey = "CategoryListKey";
+        private const string CategoryCacheKey = Constants.CATEGORY_CACHE_KEY;
 
         public GetAllCategoriesQuery(IDataBaseService dataBaseService, IMapper mapper, IMemoryCache memoryCache)
         {

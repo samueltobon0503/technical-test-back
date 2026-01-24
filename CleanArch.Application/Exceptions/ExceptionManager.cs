@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.EntityFrameworkCore;
 
 namespace CleanArch.Application.Exceptions
 {
@@ -9,10 +10,18 @@ namespace CleanArch.Application.Exceptions
     {
         public void OnException(ExceptionContext context)
         {
-            context.Result = new ObjectResult(ResponseApiService.Response(StatusCodes.Status500InternalServerError, null, context.Exception.Message));
+            int statusCode = StatusCodes.Status500InternalServerError;
+            string message = context.Exception.Message;
 
-            context.HttpContext.Response.StatusCode = StatusCodes.Status500InternalServerError;
+            if (context.Exception is DbUpdateConcurrencyException)
+            {
+                statusCode = StatusCodes.Status409Conflict;
+            }
 
+            context.Result = new ObjectResult(ResponseApiService.Response(statusCode, null, message));
+            context.HttpContext.Response.StatusCode = statusCode;
+
+            context.ExceptionHandled = true;
         }
     }
 }
